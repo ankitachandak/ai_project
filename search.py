@@ -88,7 +88,7 @@ def depthFirstSearch(problem):
   stack.push((problem.getStartState(),[]))
   visited = []
   while stack:
-    x,path = stack.pop()
+    x, path = stack.pop()
     visited.append(x)
     if problem.isGoalState(x):
       return path
@@ -105,7 +105,6 @@ def breadthFirstSearch(problem):
   q = util.Queue()
   visited = []
   current_state = problem.getStartState()
-
   q.push((current_state, []))
   while not q.isEmpty():
     current_state, path = q.pop()
@@ -113,7 +112,7 @@ def breadthFirstSearch(problem):
     if problem.isGoalState(current_state):
       return path
     for i in problem.getSuccessors(current_state):
-      if not i[0] in visited:
+      if i[0] not in visited:
         q.push((i[0], path+[i[1]]))
       
 def uniformCostSearch(problem):
